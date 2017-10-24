@@ -31,9 +31,8 @@ sub compose {
     push( @result, @{ $self->word_data()->{ $sorted } } )
       if( $self->word_data()->{ $sorted } );
   }
-  use Data::Dumper;
-  warn Dumper(@result);
-  return $self->render( json => \@result );
+
+  return $self->render( json => [ uniq( @result ) ] );
 }
 
 1;
